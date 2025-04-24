@@ -20,9 +20,6 @@ To ensure the reliability of business rules, unit tests and integration tests we
 🧠 Domain-Driven Design (DDD)
 The project follows Domain-Driven Design principles to clearly separate responsibilities across Domain, Application, Infrastructure, and Presentation layers, promoting maintainability and scalability.
 
-📋 Scrum Methodology
-Agile Scrum practices were adopted to structure the development process, with weekly sprints, a prioritized backlog, and continuous reviews, simulating a real team workflow.
-
 🧱 SOLID Principles
 The system was built applying the SOLID principles, encouraging cohesion, low coupling, and ease of extension with minimal impact on existing features.
 
