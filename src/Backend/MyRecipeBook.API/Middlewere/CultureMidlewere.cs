@@ -20,7 +20,7 @@ namespace MyRecipeBook.API.Middlewere
 
             var culture = new CultureInfo(requestCulture);
 
-            CultureInfo.CurrentCulture = culture;//manda trocar
+            CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
 
             //add UI
