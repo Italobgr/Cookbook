@@ -1,5 +1,6 @@
 ﻿using MyRecipeBook.Comunication.Requests;
 using MyRecipeBook.Comunication.Responses;
+using MyRecipeBook.Exepition.ExeptionsBase;
 
 namespace MyRecipeBook.Application.UseCases.User.Register
 {
@@ -27,9 +28,9 @@ namespace MyRecipeBook.Application.UseCases.User.Register
 
             if (!result.IsValid)
             {
-                var erroMessage = result.Errors.Select(e => e.ErrorMessage);
+                var erroMessage = result.Errors.Select(e => e.ErrorMessage).ToList();  //converte de Ienu to list
 
-                throw new Exception();//fazer a manipulação das exceptions
+                throw new ErrorOnValidatoonExeption(erroMessage);//fazer a manipulação das exceptions
             }
 
 
