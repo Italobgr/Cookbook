@@ -16,11 +16,14 @@ namespace MyRecipeBook.API.Controllers
         public IActionResult Register(RequestRegisterUsersJson request) 
         {
 
-            var usecase = new RegisterUseUseCases();
 
-            var result = usecase.Execute(request);
 
-            return Created(string.Empty, result);
+                var usecase = new RegisterUseUseCases();
+
+                var result = usecase.Execute(request);
+
+                return Created(string.Empty, result);
+
 
         }
 
