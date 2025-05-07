@@ -48,7 +48,7 @@ namespace MyRecipeBook.API.Filters
                 /*FALTA CRIAR O RESTO DOS UNKNOW_ERROR ITALIANO E PORTUGUES  */
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;//internal server erro usa o obj result
-                context.Result = new ObjectResult(new ResponseErrorJson(ResourceMensagesExeption.UNKNOW_ERROR)); //result devolve para o body da minha resposta
+                context.Result = new ObjectResult(new ResponseErrorJson(ResourceMensagesExeption.PASSWORD_EMPTY)); //result devolve para o body da minha resposta
             }
 
         }
