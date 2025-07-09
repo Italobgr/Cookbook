@@ -7,7 +7,7 @@ using System.Net;
 
 namespace MyRecipeBook.API.Filters
 {
-    public class ExceptionFilter : IExceptionFilter //identifica a classa como  um filtro de excepitions 
+    public class ExceptionFilter : IExceptionFilter //identifica a classa como  um filtro de excepitions e define na program
     {
         public void OnException(ExceptionContext context)
         {
