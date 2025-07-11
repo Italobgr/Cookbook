@@ -23,7 +23,7 @@ namespace MyRecipeBook.API.Filters
         }
 
 
-
+        //erro de falha
         private void HandlerProjectException(ExceptionContext context)
         {
 
@@ -38,7 +38,7 @@ namespace MyRecipeBook.API.Filters
 
         }
 
-
+        //erro interno do servidor -> desconhecido
         private void throwUnknowExcepion(ExceptionContext context)
         {
 
@@ -46,6 +46,7 @@ namespace MyRecipeBook.API.Filters
             {
 
                 /*FALTA CRIAR O RESTO DOS UNKNOW_ERROR ITALIANO E PORTUGUES  */
+                
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;//internal server erro usa o obj result
                 context.Result = new ObjectResult(new ResponseErrorJson(ResourceMensagesExeption.PASSWORD_EMPTY)); //result devolve para o body da minha resposta
