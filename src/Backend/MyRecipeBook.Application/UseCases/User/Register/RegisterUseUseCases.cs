@@ -24,6 +24,7 @@ namespace MyRecipeBook.Application.UseCases.User.Register
         {
             var validator = new RegisterUserValidator();
 
+
           var result =  validator.Validate(request);//ele retorna um obj validare result
 
             if (!result.IsValid)
