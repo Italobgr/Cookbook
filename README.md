@@ -5,7 +5,7 @@ This project consists of developing a .NET Web API for managing culinary recipes
  Google OAuth Authentication
 A secure and modern login system was implemented using Google OAuth 2.0, allowing users to log in with their Google accounts, providing a seamless and secure authentication experience.
 
-☁ Deployment on Azure
+Deployment on Azure
 The API is deployed and maintained on Microsoft Azure, simulating a real production environment. This includes environment setup, resource management, and deployment using Azure App Services, ensuring reliability and scalability.
 
  ChatGPT Integration
