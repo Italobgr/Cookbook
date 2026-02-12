@@ -1,21 +1,21 @@
 ﻿using FluentValidation;
-using MyRecipeBook.Comunication.Requests;
-using MyRecipeBook.Exepition;
+using MyRecipeBook.Communication.Requests;
+using MyRecipeBook.Domain.Extensions;
+using MyRecipeBook.Exceptions;
 
 namespace MyRecipeBook.Application.UseCases.User.Register
 {
-    public class RegisterUserValidator : AbstractValidator<RequestRegisterUsersJson>
+    public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
     {
-
-        public RegisterUserValidator()
+        public RegisterUserValidator() 
         {
-
-            RuleFor(user => user.Name).NotEmpty().WithMessage(ResourceMensagesExeption.NAME_EMPTY);
-            RuleFor(user => user.Email).NotEmpty().WithMessage(ResourceMensagesExeption.EMAIL_EMPTY);
-            RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMensagesExeption.EMAIL_INVALID);
-            RuleFor(user => user.Password.Length).GreaterThan(6).WithMessage(ResourceMensagesExeption.PASSWORD_EMPTY); ;
-
+            RuleFor(user => user.Name).NotEmpty().WithMessage(ResourceMessagesException.NAME_EMPTY);
+            RuleFor(user => user.Email).NotEmpty().WithMessage(ResourceMessagesException.EMAIL_EMPTY);
+            RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMessagesException.PASSWORD_EMPTY);
+            When(user => string.IsNullOrEmpty(user.Email).IsFalse(), () =>
+            {
+                RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessagesException.EMAIL_INVALID);
+            });
         }
-
     }
 }

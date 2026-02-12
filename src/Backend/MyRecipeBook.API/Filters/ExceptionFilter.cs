@@ -1,59 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using MyRecipeBook.Comunication.Responses;
-using MyRecipeBook.Exepition;
-using MyRecipeBook.Exepition.ExeptionsBase;
+using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Exceptions;
+using MyRecipeBook.Exceptions.ExceptionsBase;
 using System.Net;
 
 namespace MyRecipeBook.API.Filters
 {
-    public class ExceptionFilter : IExceptionFilter //identifica a classa como  um filtro de excepitions e define na program
+    public class ExceptionFilter : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
         {
-
-            if (context.Exception is MyRecipeBookExeption) //se o contexto da exeção for o mesmo do my
-                HandlerProjectException(context);            
+            if (context.Exception is MyRecipeBookException)
+                HandleProjectException(context);
             else
-                throwUnknowExcepion(context);
-
-
-
-
+                ThrowUnknownException(context);
         }
 
-
-        //erro de falha
-        private void HandlerProjectException(ExceptionContext context)
+        private static void HandleProjectException(ExceptionContext context)
         {
-
-            if (context.Exception is ErrorOnValidatoonExeption)
+            if (context.Exception is InvalidLoginException)
             {
-
-                var excepition = context.Exception as ErrorOnValidatoonExeption;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(context.Exception.Message));
+            }
+            else if (context.Exception is ErrorOnValidationException)
+            {
+                var exception = context.Exception as ErrorOnValidationException;
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseErrorJson(excepition.ErrorsMessages)); //result devolve para o body da minha resposta
+                context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception!.ErrorMessages));
             }
-
         }
 
-        //erro interno do servidor -> desconhecido
-        private void throwUnknowExcepion(ExceptionContext context)
+        private static void ThrowUnknownException(ExceptionContext context)
         {
-
-            if (context.Exception is ErrorOnValidatoonExeption)
-            {
-
-                /*FALTA CRIAR O RESTO DOS UNKNOW_ERROR ITALIANO E PORTUGUES  */
-                
-
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;//internal server erro usa o obj result
-                context.Result = new ObjectResult(new ResponseErrorJson(ResourceMensagesExeption.PASSWORD_EMPTY)); //result devolve para o body da minha resposta
-            }
-
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Result = new ObjectResult(new ResponseErrorJson(ResourceMessagesException.UNKNOWN_ERROR));
         }
-
-
     }
+    
 }

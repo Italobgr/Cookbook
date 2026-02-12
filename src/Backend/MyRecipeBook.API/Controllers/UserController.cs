@@ -1,31 +1,20 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyRecipeBook.API.Controllers;
 using MyRecipeBook.Application.UseCases.User.Register;
-using MyRecipeBook.Comunication.Requests;
-using MyRecipeBook.Comunication.Responses;
+using MyRecipeBook.Communication.Requests;
+using MyRecipeBook.Communication.Responses;
 
-namespace MyRecipeBook.API.Controllers
+namespace MyRecipeBook.API.Controller;
+public class UserController : MyRecipeBookBaseController 
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    [HttpPost]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+    public async Task<IActionResult> Register(
+        [FromServices] IRegisterUserUseCase useCase,
+        [FromBody] RequestRegisterUserJson request)
     {
-        [HttpPost]
-        [ProducesResponseType(typeof(ResponseRegisterUserJson), StatusCodes.Status201Created)]//o status que ele vai devolver e o body 
-        public IActionResult Register(RequestRegisterUsersJson request) 
-        {
+        var result = await useCase.Execute(request);
 
-
-
-                var usecase = new RegisterUseUseCases();
-
-                var result = usecase.Execute(request);
-
-                return Created(string.Empty, result);
-
-
-        }
-
+        return Created(string.Empty, result);
     }
 }
