@@ -29,11 +29,11 @@ Durante o desenvolvimento do projeto, irei desenvolver:
 
 ### Features
 
-- **Gerenciamento de Receitas**: Criação, edição, exclusão e filtro de receitas. 🍲✏️🗑️🔍
-- **Login com Google**: Integração para autenticação via conta Google. 🔑🔗🟦
-- **Integração com ChatGPT**: Utilização de IA para melhorar a experiência dos usuários na geração de receitas a partir de ingredientes fornecidos. 🤖🍳
-- **Mensageria**: Utilização de mensageria (Service Bus - Queue), para gerenciar a exclusão de contas. 📩🗂️🚫
-- **Upload de Imagem**: Permite aos usuários enviar uma imagem para ilustrar suas receitas. 📸⬆️🖼️
+- **Gerenciamento de Receitas**: Criação, edição, exclusão e filtro de receitas. 
+- **Login com Google**: Integração para autenticação via conta Google. 
+- **Integração com ChatGPT**: Utilização de IA para melhorar a experiência dos usuários na geração de receitas a partir de ingredientes fornecidos. 
+- **Mensageria**: Utilização de mensageria (Service Bus - Queue), para gerenciar a exclusão de contas. 
+- **Upload de Imagem**: Permite aos usuários enviar uma imagem para ilustrar suas receitas. 
 
 ### Construído com
 
@@ -65,7 +65,7 @@ Para obter uma cópia local funcionando, siga estes passos simples.
 
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/Ghitado/my-recipe-book.git
+    git clone https://github.com/Italobgr/Cookbook.git
     ```
 
 2. Preencha as informações no arquivo `appsettings.Development.json`.
